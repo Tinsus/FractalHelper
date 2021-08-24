@@ -13,19 +13,58 @@
   "url": "https://github.com/Tinsus/FractalHelper",
   "contributors": [
     {
-      "name": "Fabian",
+      "name": "Fabian (Tinsus.3495)",
       "username": "Tinsus.3495"
     },
     {
-      "name": "Felix",
+      "name": "Felix (fexxianosch.1087)",
       "username": "fexxianosch.1087"
     }
   ]
   /*
-  "directories": [ "markers" ]
+  "directories": [ "markers" ],
+  "actions": [ "Reload Markers" ],
   "api_permissions": {
-      "account"     : { "optional": true,  "details": "Needed if you want the special feature enabled." },
-      "inventories" : { "optional": false, "details": "Needed to review the item in your inventory." }
+       "account": {
+      "optional": true,
+      "details": "Needed if you want the special feature enabled."
+    },
+    "inventories": {
+      "optional": false,
+      "details": "Needed to review the item in your inventory."
+    },
+    "characters": {
+      "optional": false,
+      "details": "Needed to review the item in your inventory."
+    },
+    "tradingpost": {
+      "optional": false,
+      "details": "Needed to review the item in your inventory."
+    },
+    "wallet": {
+      "optional": false,
+      "details": "Needed to review the item in your inventory."
+    },
+    "unlocks": {
+      "optional": false,
+      "details": "Needed to review the item in your inventory."
+    },
+    "pvp": {
+      "optional": false,
+      "details": "Needed to review the item in your inventory."
+    },
+    "builds": {
+      "optional": false,
+      "details": "Needed to review the item in your inventory."
+    },
+    "progression": {
+      "optional": false,
+      "details": "Needed to review the item in your inventory."
+    },
+    "guilds": {
+      "optional": false,
+      "details": "Needed to review the item in your inventory."
+    }
   }
   */
 }
