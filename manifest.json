@@ -1,18 +1,31 @@
 {
   "name": "FractalHelper",
   "version": "0.1.0",
-  "namespace": "FractalHelper",
+  "namespace": "ff.FractalHelper",
   "package": "FractalHelper.dll",
   "manifest_version": 1,
 
-  "description": "Description of your module. Visit https://github.com/blish-hud/manifest.json/blob/master/manifest-v1.md for details about the manifest format.",
+  "description": "Lets make fractales way more easy. With skips and tactics and brain.exe.",
   "dependencies": {
-    "bh.blishhud": ">=0.5.2"
+    "bh.blishhud": ">=0.7.0",
+    "bh.general.markersandpaths": ">=0.2.1"
   },
   "url": "https://github.com/Tinsus/FractalHelper",
   "contributors": [
     {
-      "name": "Fabian"
+      "name": "Fabian",
+      "username": "Tinsus.3495"
+    },
+    {
+      "name": "Felix",
+      "username": "fexxianosch.1087"
     }
   ]
+  /*
+  "directories": [ "markers" ]
+  "api_permissions": {
+      "account"     : { "optional": true,  "details": "Needed if you want the special feature enabled." },
+      "inventories" : { "optional": false, "details": "Needed to review the item in your inventory." }
+  }
+  */
 }
