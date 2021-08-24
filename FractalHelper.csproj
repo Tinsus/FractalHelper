@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0C104ABC-9A05-4889-82DC-610CB9C74D99}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Fabian.FractalHelper</RootNamespace>
+    <RootNamespace>ff.FractalHelper</RootNamespace>
     <AssemblyName>FractalHelper</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
