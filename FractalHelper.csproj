@@ -214,7 +214,7 @@
   </Target>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties manifest_1json__JsonSchema="https://github.com/blish-hud/manifest.json/blob/master/v1/manifest.json" />
+      <UserProperties manifest_1json__JsonSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="packages\BlishHUD.0.7.0\build\BlishHUD.targets" Condition="Exists('packages\BlishHUD.0.7.0\build\BlishHUD.targets')" />

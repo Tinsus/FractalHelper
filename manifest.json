@@ -20,9 +20,9 @@
       "name": "Felix (fexxianosch.1087)",
       "username": "fexxianosch.1087"
     }
-  ]
+  ],
+  "directories": [ "fractalhelper" ]
   /*
-  "directories": [ "markers" ],
   "actions": [ "Reload Markers" ],
   "api_permissions": {
        "account": {
