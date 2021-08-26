@@ -38,7 +38,7 @@ namespace ff.FractalHelper
         internal ContentsManager ContentsManager => this.ModuleParameters.ContentsManager;
         internal DirectoriesManager DirectoriesManager => this.ModuleParameters.DirectoriesManager;
         internal Gw2ApiManager Gw2ApiManager => this.ModuleParameters.Gw2ApiManager;
-        internal static Module Instance { get; set; }
+        internal static Module Instance { get; private set; }
         #endregion
 
         #region Controls
@@ -57,7 +57,9 @@ namespace ff.FractalHelper
         #endregion
 
         [ImportingConstructor]
-        public Module([Import("ModuleParameters")] ModuleParameters moduleParameters) : base(moduleParameters) { }
+        public Module([Import("ModuleParameters")] ModuleParameters moduleParameters) : base(moduleParameters) {
+            Instance = this;
+        }
 
         protected override void DefineSettings(SettingCollection settings)
         {
@@ -203,7 +205,7 @@ namespace ff.FractalHelper
 
             private void InitTextures()
             {
-                _textureDefaultBackround = ContentsManager.GetTexture("156006.png");
+                _textureDefaultBackround = Instance.ContentsManager.GetTexture("156006.png");
                 _textureSplitLine = Content.GetTexture("605024");
                 _textureBlackFade = Content.GetTexture("fade-down-46");
                 _textureTabActive = Content.GetTexture("window-tab-active");
