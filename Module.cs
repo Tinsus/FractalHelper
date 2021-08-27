@@ -163,6 +163,9 @@ namespace ff.FractalHelper
             public string key { get; set; }
             public string en { get; set; }
             public string de { get; set; }
+            public string es { get; set; }
+            public string fr { get; set; }
+            public string kp { get; set; }
         }
         private void ReadLoca(Stream fileStream)
         {
@@ -185,6 +188,15 @@ namespace ff.FractalHelper
                 {
                     case "German":
                         value = v.de;
+                        break;
+                    case "Spanish":
+                        value = v.es;
+                        break;
+                    case "French":
+                        value = v.fr;
+                        break;
+                    case "Korean":
+                        value = v.kp;
                         break;
                     default:
                         value = v.en;
