@@ -1,16 +1,16 @@
 [
-#	{
-#		"key": "value used by GetLoca("value") to identify this line",
-#		"en": "English required",
-#		"de": "German",
-#		"es": "Spanish",
-#		"fr": "French",
-#		"kp": "Korean"
-#		attention! The last entry mustn't end with a comma but any other must
-#		add linebrakes using \n
-#		Warning! This file is overwritten every time Blish-HUD starts.
-#		So if you want to improve or extend the translation: make a copy first and than edit this file. If you like get in touch with the developer team.
-#	},
+/*	{
+		"key": "value used by GetLoca("value") to identify this line",
+		"en": "English required",
+		"de": "German",
+		"es": "Spanish",
+		"fr": "French",
+		"kp": "Korean"
+		attention! The last entry mustn't end with a comma but any other must
+		add linebrakes using \n
+		Warning! This file is overwritten every time Blish-HUD starts.
+		So if you want to improve or extend the translation: make a copy first and than edit this file. If you like get in touch with the developer team.
+	}, */
 	{
 		"key": "setting1_title",
 		"en": "Make the wiki dumb again",
@@ -29,7 +29,7 @@
 	{
 		"key": "setting2_desc",
 		"en": "As all Munschkins know: if you are a Super Munschkin you have to deal with all advantages and disadvantages of your classes. So keep that in mind if you like to see all skips and markers independent of your current class.",
-		"de": "Wie alle Munschkins wissen: Wenn Du ein Super Munschkin bist musst Du mit allen Vorteilen und Nachteilen Deiner Klassen umgeben. Halte das also im Hinterkopf, wenn due es magst alle Abkürzungen und Marker, unabhängig Deiner aktuellen Klasse, zu sehen."
+		"de": "Wie alle Munschkins wissen: Wenn Du ein Super Munschkin bist, musst Du mit allen Vorteilen und Nachteilen Deiner Klassen umgeben. Halte das also im Hinterkopf, wenn Du es magst alle Abkürzungen und Marker, unabhängig Deiner aktuellen Klasse, zu sehen."
 	},
 	{
 		"key": "setting3_title",
