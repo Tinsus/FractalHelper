@@ -267,16 +267,15 @@ namespace ff.FractalHelper
         public class TabbedSettingWindow : WindowBase
         {
             private const int TAB_HEIGHT = 52;
-            private const int TAB_WIDTH = 104;
-            private const int TAB_ICON_SIZE = 32;
-
-            private const int TAB_SECTION_WIDTH = 46;
-
+            private const int TAB_WIDTH = 94;
+            private const int TAB_ICON_SIZE = 48;
+            private const int TAB_SECTION_WIDTH = 39;
             private const int WINDOWCONTENT_WIDTH = 825;
             private const int WINDOWCONTENT_HEIGHT = 680;
 
-            private static readonly Microsoft.Xna.Framework.Rectangle StandardTabBounds = new Microsoft.Xna.Framework.Rectangle(TAB_SECTION_WIDTH, 24, TAB_WIDTH, TAB_HEIGHT);
+            private static readonly Microsoft.Xna.Framework.Rectangle StandardTabBounds = new Microsoft.Xna.Framework.Rectangle(TAB_SECTION_WIDTH, TAB_ICON_SIZE/3, TAB_WIDTH, TAB_HEIGHT);
 
+            #region tabs
             public event EventHandler<EventArgs> TabChanged;
 
             protected int _selectedTabIndex = -1;
@@ -300,6 +299,7 @@ namespace ff.FractalHelper
                 get => _hoveredTabIndex;
                 set => SetProperty(ref _hoveredTabIndex, value);
             }
+            #endregion
 
             private readonly LinkedList<IView> _currentNav = new LinkedList<IView>();
 
@@ -313,6 +313,7 @@ namespace ff.FractalHelper
             // TODO: Remove public access to _panels - only kept currently as it is used by KillProof.me module (need more robust "Navigate()" call for panel history)
             public Dictionary<WindowTab, Panel> Panels => _panels;
 
+            #region initiation
             private Texture2D _textureDefaultBackround;
             private Texture2D _textureSplitLine;
             private Texture2D _textureBlackFade;
@@ -345,14 +346,11 @@ namespace ff.FractalHelper
                 _textureBlackFade = Content.GetTexture("fade-down-46");
                 _textureTabActive = Content.GetTexture("window-tab-active");
             }
+            #endregion
 
+            #region event-/ mouse input-handling
             protected virtual void OnTabChanged(EventArgs e)
             {
-                if (_visible)
-                {
-                    Content.PlaySoundEffectByName($"tab-swap-{RandomUtil.GetRandom(1, 5)}");
-                }
-
                 this.Subtitle = SelectedTab.Name;
 
                 Navigate(_views[this.SelectedTab](), false);
@@ -379,9 +377,11 @@ namespace ff.FractalHelper
                 if (RelativeMousePosition.X < StandardTabBounds.Right && RelativeMousePosition.Y > StandardTabBounds.Y)
                 {
                     var tabList = _tabRegions.ToList();
+
                     for (int tabIndex = 0; tabIndex < _tabs.Count; tabIndex++)
                     {
                         var tab = _tabs[tabIndex];
+
                         if (_tabRegions[tab].Contains(RelativeMousePosition))
                         {
                             HoveredTabIndex = tabIndex;
@@ -408,9 +408,11 @@ namespace ff.FractalHelper
                 if (RelativeMousePosition.X < StandardTabBounds.Right && RelativeMousePosition.Y > StandardTabBounds.Y)
                 {
                     var tabList = _tabs.ToList();
+
                     for (int tabIndex = 0; tabIndex < _tabs.Count; tabIndex++)
                     {
                         var tab = tabList[tabIndex];
+
                         if (_tabRegions[tab].Contains(RelativeMousePosition))
                         {
                             SelectedTabIndex = tabIndex;
@@ -423,9 +425,9 @@ namespace ff.FractalHelper
 
                 base.OnLeftMouseButtonPressed(e);
             }
+            #endregion
 
             #region Navigation
-
             public void Navigate(IView newView, bool keepHistory = true)
             {
                 if (!keepHistory)
@@ -465,6 +467,7 @@ namespace ff.FractalHelper
             {
                 var tab = new WindowTab(name, icon, priority);
                 AddTab(tab, viewFunc);
+
                 return tab;
             }
 
@@ -535,11 +538,9 @@ namespace ff.FractalHelper
             {
                 return StandardTabBounds.OffsetBy(-TAB_WIDTH, ContentRegion.Y + index * TAB_HEIGHT);
             }
-
             #endregion
 
             #region Calculated Layout
-
             private Microsoft.Xna.Framework.Rectangle _layoutTopTabBarBounds;
             private Microsoft.Xna.Framework.Rectangle _layoutBottomTabBarBounds;
 
@@ -548,8 +549,6 @@ namespace ff.FractalHelper
 
             private Microsoft.Xna.Framework.Rectangle _layoutTopSplitLineSourceBounds;
             private Microsoft.Xna.Framework.Rectangle _layoutBottomSplitLineSourceBounds;
-
-            #endregion
 
             public override void RecalculateLayout()
             {
@@ -567,18 +566,9 @@ namespace ff.FractalHelper
                 int topSplitHeight = selectedTabBounds.Top - ContentRegion.Top;
                 int bottomSplitHeight = ContentRegion.Bottom - selectedTabBounds.Bottom;
 
-                _layoutTopSplitLineBounds = new Microsoft.Xna.Framework.Rectangle(ContentRegion.X - _textureSplitLine.Width + 1,
-                                                          ContentRegion.Y,
-                                                          _textureSplitLine.Width,
-                                                          topSplitHeight);
-
+                _layoutTopSplitLineBounds = new Microsoft.Xna.Framework.Rectangle(ContentRegion.X - _textureSplitLine.Width + 1, ContentRegion.Y, _textureSplitLine.Width, topSplitHeight);
                 _layoutTopSplitLineSourceBounds = new Microsoft.Xna.Framework.Rectangle(0, 0, _textureSplitLine.Width, topSplitHeight);
-
-                _layoutBottomSplitLineBounds = new Microsoft.Xna.Framework.Rectangle(ContentRegion.X - _textureSplitLine.Width + 1,
-                                                             selectedTabBounds.Bottom,
-                                                             _textureSplitLine.Width,
-                                                             bottomSplitHeight);
-
+                _layoutBottomSplitLineBounds = new Microsoft.Xna.Framework.Rectangle(ContentRegion.X - _textureSplitLine.Width + 1, selectedTabBounds.Bottom, _textureSplitLine.Width, bottomSplitHeight);
                 _layoutBottomSplitLineSourceBounds = new Microsoft.Xna.Framework.Rectangle(0, _textureSplitLine.Height - bottomSplitHeight, _textureSplitLine.Width, bottomSplitHeight);
             }
 
@@ -587,15 +577,14 @@ namespace ff.FractalHelper
                 base.PaintBeforeChildren(spriteBatch, bounds);
 
                 // Draw black block for tab bar
-                spriteBatch.DrawOnCtrl(this, ContentService.Textures.Pixel,
-                                       _layoutTopTabBarBounds,
-                                       Microsoft.Xna.Framework.Color.Black);
+                spriteBatch.DrawOnCtrl(this, ContentService.Textures.Pixel, _layoutTopTabBarBounds, Microsoft.Xna.Framework.Color.Black);
 
                 // Draw black fade for tab bar
                 spriteBatch.DrawOnCtrl(this, _textureBlackFade, _layoutBottomTabBarBounds);
 
                 // Draw tabs
                 int i = 0;
+
                 foreach (var tab in _tabs)
                 {
                     bool active = (i == this.SelectedTabIndex);
@@ -606,10 +595,7 @@ namespace ff.FractalHelper
 
                     if (active)
                     {
-                        spriteBatch.DrawOnCtrl(this, _textureDefaultBackround,
-                                               tabBounds,
-                                               tabBounds.OffsetBy(_windowBackgroundOrigin.ToPoint()).OffsetBy(-5, -13).Add(0, -35, 0, 0).Add(tabBounds.Width / 3, 0, -tabBounds.Width / 3, 0),
-                                         Microsoft.Xna.Framework.Color.White);
+                        spriteBatch.DrawOnCtrl(this, _textureDefaultBackround, tabBounds, tabBounds.OffsetBy(_windowBackgroundOrigin.ToPoint()).OffsetBy(-5, -13).Add(0, -35, 0, 0).Add(tabBounds.Width / 3, 0, -tabBounds.Width / 3, 0), Microsoft.Xna.Framework.Color.White);
 
                         spriteBatch.DrawOnCtrl(this, _textureTabActive, tabBounds);
                     }
@@ -618,29 +604,18 @@ namespace ff.FractalHelper
                         spriteBatch.DrawOnCtrl(this, ContentService.Textures.Pixel, new Microsoft.Xna.Framework.Rectangle(0, tabBounds.Y, TAB_SECTION_WIDTH, tabBounds.Height), Microsoft.Xna.Framework.Color.Black);
                     }
 
-                    spriteBatch.DrawOnCtrl(this, tab.Icon,
-                                     new Microsoft.Xna.Framework.Rectangle(TAB_WIDTH / 4 - TAB_ICON_SIZE / 2 + 2,
-                                                   TAB_HEIGHT / 2 - TAB_ICON_SIZE / 2,
-                                                   TAB_ICON_SIZE,
-                                                   TAB_ICON_SIZE).OffsetBy(subBounds.Location),
-                                     active || hovered
-                                         ? Microsoft.Xna.Framework.Color.White
-                                         : ContentService.Colors.DullColor);
+                    spriteBatch.DrawOnCtrl(this, tab.Icon, new Microsoft.Xna.Framework.Rectangle(TAB_WIDTH / 4 - TAB_ICON_SIZE / 2 + 2, TAB_HEIGHT / 2 - TAB_ICON_SIZE / 2, TAB_ICON_SIZE, TAB_ICON_SIZE).OffsetBy(subBounds.Location), active || hovered ? Microsoft.Xna.Framework.Color.White : ContentService.Colors.DullColor);
 
                     i++;
                 }
 
                 // Draw top of split
-                spriteBatch.DrawOnCtrl(this, _textureSplitLine,
-                                       _layoutTopSplitLineBounds,
-                                       _layoutTopSplitLineSourceBounds);
+                spriteBatch.DrawOnCtrl(this, _textureSplitLine, _layoutTopSplitLineBounds, _layoutTopSplitLineSourceBounds);
 
                 // Draw bottom of split
-                spriteBatch.DrawOnCtrl(this, _textureSplitLine,
-                                       _layoutBottomSplitLineBounds,
-                                       _layoutBottomSplitLineSourceBounds);
+                spriteBatch.DrawOnCtrl(this, _textureSplitLine, _layoutBottomSplitLineBounds, _layoutBottomSplitLineSourceBounds);
             }
         }
-
     }
+    #endregion
 }
