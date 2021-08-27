@@ -1,5 +1,6 @@
 [
-/*	{
+/*
+	{
 		"key": "value used by GetLoca("value") to identify this line",
 		"en": "English required",
 		"de": "German",
@@ -10,7 +11,8 @@
 		add linebrakes using \n
 		Warning! This file is overwritten every time Blish-HUD starts.
 		So if you want to improve or extend the translation: make a copy first and than edit this file. If you like get in touch with the developer team.
-	}, */
+	},
+*/
 	{
 		"key": "setting1_title",
 		"en": "Make the wiki dumb again",
@@ -54,11 +56,26 @@
 	{
 		"key": "setting5_title",
 		"en": "I never did any mistake ever",
-		"de": "Ich habe noch nie einen Fehler gemacht"
+		"de": "Ich habe noch nie irgendeinen Fehler gemacht"
 	},
 	{
 		"key": "setting5_desc",
 		"en": "We all know how smart you are so we don't need to tell you if you are going to go somewhere 'with a better view of the landscape' or 'more fun'.",
 		"de": "Wir wissen alle wie schlau Du bist, also sagen wir Dir nicht, wenn Du dabei bist irgendwo 'mit einerem besseren Blick auf die Landschaft' oder 'wo es spaßiger ist' hin zu gehen."
+	},
+	{
+		"key": "title",
+		"en": "FractalHelper",
+		"de": "FractalHelper"
+	},
+	{
+		"key": "wiki",
+		"en": "Wiki",
+		"de": "Wiki"
+	},
+	{
+		"key": "settings",
+		"en": "Settings",
+		"de": "Einstellungen"
 	}
 ]

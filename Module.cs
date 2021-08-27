@@ -43,7 +43,6 @@ namespace ff.FractalHelper
         #endregion
 
         #region Controls
-
         private CornerIcon _fractalHelperIcon;
         public ContextMenuStrip _fractalHelperContextMenuStrip;
         #endregion
@@ -58,16 +57,15 @@ namespace ff.FractalHelper
         private SettingEntry<bool> settingIgnorePosition;
         #endregion
 
+        private string[] _filesToCopy = {
+            "ui.loca",
+        };
+
         #region localization
         private DirectoryReader _directoryReader;
         private JsonSerializerOptions _jsonOptions;
         private string _fractalHelperDirectory;
-
         public Dictionary<string, string> _loca;
-
-        private string[] _filesToCopy = {
-            "ui.loca",
-        };
         #endregion
 
         [ImportingConstructor]
@@ -124,7 +122,7 @@ namespace ff.FractalHelper
         {
             _fractalHelperIcon = new CornerIcon()
             {
-                IconName = "FractalHelper",
+                IconName = GetLoca("title"),
                 Icon = ContentsManager.GetTexture(@"logo_32.png"),
                 Priority = 0
             };
@@ -133,14 +131,14 @@ namespace ff.FractalHelper
 
             var newWindow = new TabbedSettingWindow()
             {
-                Title = "FractalHelper",
+                Title = GetLoca("title"),
                 Parent = GameService.Graphics.SpriteScreen,
                 Location = new Point(100, 100),
                 Emblem = this.ContentsManager.GetTexture(@"logo_64.png")
             };
 
-            newWindow.AddTab(new WindowTab("Hauptfenster", ContentsManager.GetTexture(@"102497.png"), 1), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
-            newWindow.AddTab(new WindowTab("Kartenfenster", ContentsManager.GetTexture(@"156027.png"), 2), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
+            newWindow.AddTab(new WindowTab(GetLoca("wiki"), ContentsManager.GetTexture(@"102497.png"), 1), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
+            newWindow.AddTab(new WindowTab(GetLoca("settings"), ContentsManager.GetTexture(@"156027.png"), 2), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
 
             _fractalHelperIcon.Menu = _fractalHelperContextMenuStrip;
 
@@ -249,7 +247,6 @@ namespace ff.FractalHelper
 
         protected override void OnModuleLoaded(EventArgs e)
         {
-
             // Base handler must be called
             base.OnModuleLoaded(e);
         }
