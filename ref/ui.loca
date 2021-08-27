@@ -1,0 +1,52 @@
+[
+	{
+		"key": "setting1_title",
+		"en": "Make the wiki dumb again",
+		"de": "Mache das Wiki wieder dumm"
+	},
+	{
+		"key": "setting1_desc",
+		"en": "The hitchhiker's guide to the fractals of the mists (aka wiki) knows were you are and selects the correct part for you - but not if you activate this option.",
+		"de": "Der Anhalter durch die Fraktale der Nebel (aka Wiki) weiß wo Du bist und sucht für Dich den passenden Teil heraus - aber nicht, wenn Du diese Option aktivierst."
+	},
+	{
+		"key": "setting2_title",
+		"en": "Super class",
+		"de": "Super Klasse"
+	},
+	{
+		"key": "setting2_desc",
+		"en": "As all Munschkins know: if you are a Super Munschkin you have to deal with all advantages and disadvantages of your classes. So keep that in mind if you like to see all skips and markers independent of your current class.",
+		"de": "Wie alle Munschkins wissen: Wenn Du ein Super Munschkin bist musst Du mit allen Vorteilen und Nachteilen Deiner Klassen umgeben. Halte das also im Hinterkopf, wenn due es magst alle Abkürzungen und Marker, unabhängig Deiner aktuellen Klasse, zu sehen."
+	},
+	{
+		"key": "setting3_title",
+		"en": "My eyes are awsome",
+		"de": "Meine Augen sind unglaublich"
+	},
+	{
+		"key": "setting3_desc",
+		"en": "Yeah, you know maybe it is good to only see what comes next, but maybe its even better to see every marker and path out there. Activate this option to ignore the distance to markers.",
+		"de": "Jaaa, du weißst schon, vielleicht es gut zu wissen, was als nächstes kommen, aber vielleich ist es besser jeden Marker und Pfad da draußen zu sehen. Aktiviere diese Option um den Abstand zu den Markern zu ignorieren."
+	},
+	{
+		"key": "setting4_title",
+		"en": "I bring my own ASHPD",
+		"de": "Ich bringe mein eigenes ASHPD mit"
+	},
+	{
+		"key": "setting4_desc",
+		"en": "You brought your very own Aperture Science Quantum Tunneling Device with you? Activate this if you want to see all markers for portals. GLaDOS may gives you a cake at the end.",
+		"de": "Du hast Dein eigenes Aperture Science Quantum Tunneling Device mitgebracht? Aktiviere dies, wenn Du alle Marker für Portale sehen möchtest. GLaDOS gibt Dir vielleicht am Ende einen Kuchen."
+	},
+	{
+		"key": "setting5_title",
+		"en": "I never did any mistake ever",
+		"de": "Ich habe noch nie einen Fehler gemacht"
+	},
+	{
+		"key": "setting5_desc",
+		"en": "We all know how smart you are so we don't need to tell you if you are going to go somewhere 'with a better view of the landscape' or 'more fun'.",
+		"de": "Wir wissen alle wie schlau Du bist, also sagen wir Dir nicht, wenn Du dabei bist irgendwo 'mit einerem besseren Blick auf die Landschaft' oder 'wo es spaßiger ist' hin zu gehen."
+	}
+]

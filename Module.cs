@@ -23,6 +23,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using System.Text.Json;
 using System.Threading.Tasks;
 using static Blish_HUD.GameService;
 
@@ -54,6 +55,19 @@ namespace ff.FractalHelper
         private SettingEntry<bool> settingIgnoreClass;
         private SettingEntry<bool> settingIgnorePortal;
         private SettingEntry<bool> settingHideFailureWarnings;
+        private SettingEntry<bool> settingIgnorePosition;
+        #endregion
+
+        #region localization
+        private DirectoryReader _directoryReader;
+        private JsonSerializerOptions _jsonOptions;
+        private string _fractalHelperDirectory;
+
+        public Dictionary<string, string> _loca;
+
+        private string[] _filesToCopy = {
+            "ui.loca",
+        };
         #endregion
 
         [ImportingConstructor]
@@ -61,16 +75,49 @@ namespace ff.FractalHelper
             Instance = this;
         }
 
+        public string GetLoca(string key)
+        {
+            try
+            {
+                return _loca[key];
+            }
+            catch (Exception)
+            {
+                return key;
+            }            
+        }
+
         protected override void DefineSettings(SettingCollection settings)
         {
+            _loca = new Dictionary<string, string>();
+           
+            foreach (string s in _filesToCopy)
+            {
+                ExtractFile(s);
+            }
+
+            _fractalHelperDirectory = DirectoriesManager.GetFullDirectoryPath("fractalhelper");
+
+            _directoryReader = new DirectoryReader(_fractalHelperDirectory);
+
+            _jsonOptions = new JsonSerializerOptions
+            {
+                ReadCommentHandling = JsonCommentHandling.Skip,
+                AllowTrailingCommas = true,
+                IgnoreNullValues = true
+            };
+
+            _directoryReader.LoadOnFileType((Stream fileStream, IDataReader dataReader) => {
+                ReadLoca(fileStream);
+            }, ".loca");
+
             _packSettings = settings.AddSubCollection("pack");
 
-            settingNonSmartWiki = _packSettings.DefineSetting(nameof(settingNonSmartWiki), false, "Make the wiki dumb again", "The hitchhiker's guide to the fractals of the mists (aka wiki) knows were you are and selects the current part for you - but not if you activate this option.");
-            settingIgnoreClass = _packSettings.DefineSetting(nameof(settingIgnoreClass), false, "Super class", "as all Munschkins know if you are a Super Munschkin you have to deal with all advantages and disadvantages of your classes. So keep that in mind if you like to see all skips and markers independent of your current class.");
-            settingIgnorePortal = _packSettings.DefineSetting(nameof(settingIgnorePortal), false, "I bring my own ASHPD", "You brought your very own Aperture Science Quantum Tunneling Device with you? Activate this if you want to see all markers for portals. GLaDOS may gives you a cake at the end.");
-            settingHideFailureWarnings = _packSettings.DefineSetting(nameof(settingHideFailureWarnings), false, "I never did any mistake ever", "We all know how smart you are so we don't need to tell you if you are going to go somewhere 'with a better view of the landscape' or 'more fun'.");
-
-            // Overlay.UserLocale.Value
+            settingNonSmartWiki         = _packSettings.DefineSetting(nameof(settingNonSmartWiki),          false, GetLoca("setting1_title"), GetLoca("setting1_desc"));
+            settingIgnoreClass          = _packSettings.DefineSetting(nameof(settingIgnoreClass),           false, GetLoca("setting2_title"), GetLoca("setting2_desc"));
+            settingIgnorePosition       = _packSettings.DefineSetting(nameof(settingIgnorePosition),        false, GetLoca("setting3_title"), GetLoca("setting3_desc"));
+            settingIgnorePortal         = _packSettings.DefineSetting(nameof(settingIgnorePortal),          false, GetLoca("setting4_title"), GetLoca("setting4_desc"));
+            settingHideFailureWarnings  = _packSettings.DefineSetting(nameof(settingHideFailureWarnings),   false, GetLoca("setting5_title"), GetLoca("setting5_desc"));
         }
 
         protected override void Initialize()
@@ -92,10 +139,8 @@ namespace ff.FractalHelper
                 Emblem = this.ContentsManager.GetTexture(@"logo_64.png")
             };
 
-            newWindow.AddTab(new WindowTab("Hauptfenster", ContentsManager.GetTexture(@"logo_orig.png"), 1), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
-            newWindow.AddTab(new WindowTab("Kartenfenster", ContentsManager.GetTexture(@"logo_orig.png"), 2), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
-            newWindow.AddTab(new WindowTab("Tastenkürzelfenster", ContentsManager.GetTexture(@"logo_orig.png"), 3), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
-            newWindow.AddTab(new WindowTab("Runtergeladenefenster", ContentsManager.GetTexture(@"logo_orig.png"), 4), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
+            newWindow.AddTab(new WindowTab("Hauptfenster", ContentsManager.GetTexture(@"102497.png"), 1), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
+            newWindow.AddTab(new WindowTab("Kartenfenster", ContentsManager.GetTexture(@"156027.png"), 2), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
 
             _fractalHelperIcon.Menu = _fractalHelperContextMenuStrip;
 
@@ -106,7 +151,88 @@ namespace ff.FractalHelper
 
         protected override async Task LoadAsync()
         {
-            //neee
+            _directoryReader = new DirectoryReader(_fractalHelperDirectory);
+
+            _directoryReader.LoadOnFileType((Stream fileStream, IDataReader dataReader) => {
+                ReadJson(fileStream);
+            }, ".json");
+        }
+
+        public class JsonLoca
+        {
+            public string key { get; set; }
+            public string en { get; set; }
+            public string de { get; set; }
+        }
+        private void ReadLoca(Stream fileStream)
+        {
+            string lang = GameService.Overlay.UserLocale.Value.ToString();
+
+            string jsonContent;
+
+            using (var jsonReader = new StreamReader(fileStream))
+            {
+                jsonContent = jsonReader.ReadToEnd();
+            }
+
+            List<JsonLoca> userDetails = System.Text.Json.JsonSerializer.Deserialize<List<JsonLoca>>(jsonContent, _jsonOptions);
+
+            foreach(var v in userDetails)
+            {
+                string value;
+                
+                switch (lang)
+                {
+                    case "German":
+                        value = v.de;
+                        break;
+                    default:
+                        value = v.en;
+                        break;
+                }
+
+                if (value == null || value.Length == 0)
+                {
+                    value = v.en;
+                }
+
+                _loca.Add(v.key, value);
+            }
+        }
+
+        private void ReadJson(Stream fileStream) //TODO: this one needs to be edited to load specific markers data
+        {
+            /*
+            string jsonContent;
+            using (var jsonReader = new StreamReader(fileStream))
+            {
+                jsonContent = jsonReader.ReadToEnd();
+            }
+
+            try
+            {
+                string g = System.Text.Json.JsonSerializer.Deserialize<string>(jsonContent, _jsonOptions);
+                Logger.Info(g);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("FractalHelper deserialization failure: " + ex.Message);
+            }
+            //*/
+        }
+
+        private void ExtractFile(string filePath)
+        {
+            var fullPath = Path.Combine(DirectoriesManager.GetFullDirectoryPath("fractalhelper"), filePath);
+
+            using (var fs = Module.Instance.ContentsManager.GetFileStream(filePath))
+            {
+                fs.Position = 0;
+                byte[] buffer = new byte[fs.Length];
+                var content = fs.Read(buffer, 0, (int)fs.Length);
+                Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
+                System.IO.File.WriteAllBytes(fullPath, buffer);
+            }
         }
 
         protected override void OnModuleLoaded(EventArgs e)
