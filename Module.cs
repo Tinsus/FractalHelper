@@ -138,6 +138,13 @@ namespace ff.FractalHelper
             };
 
             newWindow.AddTab(new WindowTab(GetLoca("wiki"), ContentsManager.GetTexture(@"102497.png"), 1), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
+
+
+            newWindow.AddTab(new WindowTab(GetLoca("level1"), ContentsManager.GetTexture(@"102497.png"), 1), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
+            newWindow.AddTab(new WindowTab(GetLoca("level2"), ContentsManager.GetTexture(@"156027.png"), 2), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
+            newWindow.AddTab(new WindowTab(GetLoca("level3"), ContentsManager.GetTexture(@"102497.png"), 1), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
+            newWindow.AddTab(new WindowTab(GetLoca("level4"), ContentsManager.GetTexture(@"156027.png"), 2), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
+
             newWindow.AddTab(new WindowTab(GetLoca("settings"), ContentsManager.GetTexture(@"156027.png"), 2), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
 
             _fractalHelperIcon.Menu = _fractalHelperContextMenuStrip;
@@ -156,15 +163,18 @@ namespace ff.FractalHelper
             }, ".json");
         }
 
-        public class JsonLoca
+        private class JsonLoca
         {
+            #pragma warning disable IDE1006 // ignore style, cause it is lowercase in the json-files
             public string key { get; set; }
             public string en { get; set; }
             public string de { get; set; }
             public string es { get; set; }
             public string fr { get; set; }
             public string kp { get; set; }
+            #pragma warning restore IDE1006 // ignore style, cause it is lowercase in the json-files
         }
+
         private void ReadLoca(Stream fileStream)
         {
             string lang = GameService.Overlay.UserLocale.Value.ToString();

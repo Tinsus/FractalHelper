@@ -77,5 +77,25 @@
 		"key": "settings",
 		"en": "Settings",
 		"de": "Einstellungen"
+	},
+	{
+		"key": "level1",
+		"en": "",
+		"de": "Orientierung: Welche Gegner und Events gibt es?"
+	},
+	{
+		"key": "level2",
+		"en": "",
+		"de": "Anleitung: Wie funktionieren die Gegener und Events?"
+	},
+	{
+		"key": "level3",
+		"en": "",
+		"de": "Tipps: Wie kann welcher Gegner und welches Event ideal abgeschlossen werden?"
+	},
+	{
+		"key": "level4",
+		"en": "",
+		"de": "Abkürzungen: Welche Möglichkeiten gibt es, es noch schneller zu schaffen?"
 	}
 ]
