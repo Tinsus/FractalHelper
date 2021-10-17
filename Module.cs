@@ -154,7 +154,10 @@ namespace ff.FractalHelper
                 Emblem = ContentsManager.GetTexture(@"logo_64.png")
             };
 
+            _settingsWindow.Tabs.Add(new Tab(ContentsManager.GetTexture(@"102497_32.png"), () => new SettingsView(_packSettings), GetLoca("wiki")));
+
             /*
+
             newWindow.AddTab(new WindowTab(GetLoca("wiki"), ContentsManager.GetTexture(@"102497.png"), 1), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
 
             newWindow.AddTab(new WindowTab(GetLoca("level1"), ContentsManager.GetTexture(@"102497.png"), 1), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
