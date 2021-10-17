@@ -1,7 +1,16 @@
 /.vs
 /obj/
 /packages/
-/Blish HUD.DebugHelper.exe
+*.exe
 /bin/
 /FractalHelper.csproj.user
 /ref/bank/
+/Content/bin/
+*.dll
+/mgfxc.deps.json
+/mgfxc.pdb
+/mgfxc.runtimeconfig.dev.json
+/mgfxc.runtimeconfig.json
+/SharpDX.D3DCompiler.xml
+/.gitignore
+/SharpDX.xml

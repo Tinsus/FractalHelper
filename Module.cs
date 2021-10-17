@@ -82,6 +82,10 @@ namespace ff.FractalHelper
             ModuleInstance = this;
         }
 
+        #region UI
+        private TabbedWindow2 _settingsWindow;
+        #endregion
+
         public string GetLoca(string key)
         {
             try
@@ -139,16 +143,19 @@ namespace ff.FractalHelper
 
             _fractalHelperContextMenuStrip = new ContextMenuStrip();
 
-            var newWindow = new TabbedSettingWindow()
-            {
+            _settingsWindow = new TabbedWindow2(
+                ContentsManager.GetTexture(@"156006.png"),
+                new Microsoft.Xna.Framework.Rectangle(35, 36, 900, 640),
+                new Microsoft.Xna.Framework.Rectangle(95, 42, 783 + 38, 592)
+            ) {
                 Title = GetLoca("title"),
                 Parent = GameService.Graphics.SpriteScreen,
                 Location = new Point(100, 100),
-                Emblem = this.ContentsManager.GetTexture(@"logo_64.png")
+                Emblem = ContentsManager.GetTexture(@"logo_64.png")
             };
 
+            /*
             newWindow.AddTab(new WindowTab(GetLoca("wiki"), ContentsManager.GetTexture(@"102497.png"), 1), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
-
 
             newWindow.AddTab(new WindowTab(GetLoca("level1"), ContentsManager.GetTexture(@"102497.png"), 1), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
             newWindow.AddTab(new WindowTab(GetLoca("level2"), ContentsManager.GetTexture(@"156027.png"), 2), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
@@ -156,11 +163,11 @@ namespace ff.FractalHelper
             newWindow.AddTab(new WindowTab(GetLoca("level4"), ContentsManager.GetTexture(@"156027.png"), 2), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
 
             newWindow.AddTab(new WindowTab(GetLoca("settings"), ContentsManager.GetTexture(@"156027.png"), 2), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
-
+            //*/
             _fractalHelperIcon.Menu = _fractalHelperContextMenuStrip;
 
             _fractalHelperIcon.Click += delegate {
-                newWindow.ToggleWindow();
+                _settingsWindow.ToggleWindow();
             };
         }
 
@@ -255,7 +262,7 @@ namespace ff.FractalHelper
         {
             var fullPath = Path.Combine(DirectoriesManager.GetFullDirectoryPath("fractalhelper"), filePath);
 
-            using (var fs = Module.Instance.ContentsManager.GetFileStream(filePath))
+            using (var fs = ContentsManager.GetFileStream(filePath))
             {
                 fs.Position = 0;
                 byte[] buffer = new byte[fs.Length];
@@ -284,6 +291,12 @@ namespace ff.FractalHelper
             // All static members must be manually unset
         }
 
+
+        public class TabbedSettingWindow : WindowBase2 { 
+            
+        }
+
+        /*
         public class TabbedSettingWindow : WindowBase
         {
             private const int TAB_HEIGHT = 52;
@@ -361,7 +374,7 @@ namespace ff.FractalHelper
 
             private void InitTextures()
             {
-                _textureDefaultBackround = Instance.ContentsManager.GetTexture("156006.png");
+                _textureDefaultBackround = Content.GetTexture("156006");
                 _textureSplitLine = Content.GetTexture("605024");
                 _textureBlackFade = Content.GetTexture("fade-down-46");
                 _textureTabActive = Content.GetTexture("window-tab-active");
@@ -635,7 +648,8 @@ namespace ff.FractalHelper
                 // Draw bottom of split
                 spriteBatch.DrawOnCtrl(this, _textureSplitLine, _layoutBottomSplitLineBounds, _layoutBottomSplitLineSourceBounds);
             }
+            #endregion
         }
+        //*/
     }
-    #endregion
 }
