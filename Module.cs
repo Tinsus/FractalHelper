@@ -30,21 +30,30 @@ using static Blish_HUD.GameService;
 namespace ff.FractalHelper
 {
     [Export(typeof(Blish_HUD.Modules.Module))]
-    public class Module : Blish_HUD.Modules.Module
+    public class FractalHelper : Blish_HUD.Modules.Module
     {
         private static readonly Logger Logger = Logger.GetLogger<Module>();
+        internal static Module ModuleInstance;
 
         #region Service Managers
         internal SettingsManager SettingsManager => this.ModuleParameters.SettingsManager;
         internal ContentsManager ContentsManager => this.ModuleParameters.ContentsManager;
         internal DirectoriesManager DirectoriesManager => this.ModuleParameters.DirectoriesManager;
         internal Gw2ApiManager Gw2ApiManager => this.ModuleParameters.Gw2ApiManager;
-        internal static Module Instance { get; private set; }
         #endregion
 
         #region Controls
         private CornerIcon _fractalHelperIcon;
         public ContextMenuStrip _fractalHelperContextMenuStrip;
+        #endregion
+
+        #region Constants
+        private const int TOP_MARGIN = 10;
+        private const int RIGHT_MARGIN = 5;
+        private const int BOTTOM_MARGIN = 10;
+        private const int LEFT_MARGIN = 9;
+
+        private Panel trekListPanel, savedTrekListPanel, contentPanel, listPanel, infoPanel;
         #endregion
 
         #region Settings
@@ -69,8 +78,8 @@ namespace ff.FractalHelper
         #endregion
 
         [ImportingConstructor]
-        public Module([Import("ModuleParameters")] ModuleParameters moduleParameters) : base(moduleParameters) {
-            Instance = this;
+        public FractalHelper([Import("ModuleParameters")] ModuleParameters moduleParameters) : base(moduleParameters) {
+            ModuleInstance = this;
         }
 
         public string GetLoca(string key)
@@ -121,6 +130,7 @@ namespace ff.FractalHelper
         protected override void Initialize()
         {
             _fractalHelperIcon = new CornerIcon()
+
             {
                 IconName = GetLoca("title"),
                 Icon = ContentsManager.GetTexture(@"logo_32.png"),
@@ -165,14 +175,14 @@ namespace ff.FractalHelper
 
         private class JsonLoca
         {
-            #pragma warning disable IDE1006 // ignore style, cause it is lowercase in the json-files
+            #pragma warning disable IDE1006 // ignore style, because it is lowercase in the json-files
             public string key { get; set; }
             public string en { get; set; }
             public string de { get; set; }
             public string es { get; set; }
             public string fr { get; set; }
             public string kp { get; set; }
-            #pragma warning restore IDE1006 // ignore style, cause it is lowercase in the json-files
+            #pragma warning restore IDE1006 // ignore style, because it is lowercase in the json-files
         }
 
         private void ReadLoca(Stream fileStream)
