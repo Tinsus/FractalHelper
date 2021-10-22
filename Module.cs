@@ -154,12 +154,11 @@ namespace ff.FractalHelper
                 Emblem = ContentsManager.GetTexture(@"logo_64.png")
             };
 
+            _settingsWindow.Tabs.Add(new Tab(ContentsManager.GetTexture(@"102497_32.png"), () => new _settingsTab(_settingsWindow), GetLoca("wiki")));
             _settingsWindow.Tabs.Add(new Tab(ContentsManager.GetTexture(@"102497_32.png"), () => new SettingsView(_packSettings), GetLoca("wiki")));
 
             /*
-
             newWindow.AddTab(new WindowTab(GetLoca("wiki"), ContentsManager.GetTexture(@"102497.png"), 1), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
-
             newWindow.AddTab(new WindowTab(GetLoca("level1"), ContentsManager.GetTexture(@"102497.png"), 1), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
             newWindow.AddTab(new WindowTab(GetLoca("level2"), ContentsManager.GetTexture(@"156027.png"), 2), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
             newWindow.AddTab(new WindowTab(GetLoca("level3"), ContentsManager.GetTexture(@"102497.png"), 1), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
@@ -295,8 +294,43 @@ namespace ff.FractalHelper
         }
 
 
-        public class TabbedSettingWindow : WindowBase2 { 
-            
+        private class _settingsTab : View {
+            public FlowPanel RepoFlowPanel { get; private set; }
+
+            public PackRepoView()
+            {
+                this.WithPresenter(new PackRepoPresenter(this, 0));
+            }
+
+            protected override void Build(Container buildPanel)
+            {
+                this.RepoFlowPanel = new FlowPanel
+                {
+                    Size = buildPanel.ContentRegion.Size,
+                    Top = 0,
+                    CanScroll = true,
+                    ControlPadding = new Vector2(0, 15),
+                    OuterControlPadding = new Vector2(20, 5),
+                    Parent = buildPanel
+                };
+            }
+
+            /*
+            var parentPanel = new Panel()
+            {
+                CanCollapse = false,
+                ShowTint = true,
+                ShowBorder = true,
+                // BackgroundTexture = AsyncTexture2D,
+                Title = "hi",
+                CanScroll = true,
+                //ArrowRotation = 0,
+                AccentOpacity = 0,
+                Collapsed = false
+            };
+
+            return parentPanel;
+            //*//
         }
 
         /*
