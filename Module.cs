@@ -154,7 +154,7 @@ namespace ff.FractalHelper
                 Emblem = ContentsManager.GetTexture(@"logo_64.png")
             };
 
-            _settingsWindow.Tabs.Add(new Tab(ContentsManager.GetTexture(@"102497_32.png"), () => new _settingsTab(_settingsWindow), GetLoca("wiki")));
+            _settingsWindow.Tabs.Add(new Tab(ContentsManager.GetTexture(@"102497_32.png"), () => new MainView(), GetLoca("wiki")));
             _settingsWindow.Tabs.Add(new Tab(ContentsManager.GetTexture(@"102497_32.png"), () => new SettingsView(_packSettings), GetLoca("wiki")));
 
             /*
@@ -294,43 +294,46 @@ namespace ff.FractalHelper
         }
 
 
-        private class _settingsTab : View {
-            public FlowPanel RepoFlowPanel { get; private set; }
-
-            public PackRepoView()
+        public class MainView : View {
+            protected override void Build(Blish_HUD.Controls.Container buildPanel)
             {
-                this.WithPresenter(new PackRepoPresenter(this, 0));
-            }
-
-            protected override void Build(Container buildPanel)
-            {
-                this.RepoFlowPanel = new FlowPanel
+                var rootPanel = new FlowPanel()
                 {
-                    Size = buildPanel.ContentRegion.Size,
-                    Top = 0,
-                    CanScroll = true,
-                    ControlPadding = new Vector2(0, 15),
-                    OuterControlPadding = new Vector2(20, 5),
+                    WidthSizingMode = SizingMode.Fill,
+                    HeightSizingMode = SizingMode.Fill,
+                    FlowDirection = ControlFlowDirection.SingleTopToBottom,
                     Parent = buildPanel
                 };
+
+                BuildMainView(rootPanel);
             }
 
-            /*
-            var parentPanel = new Panel()
+            private ViewContainer GetStandardPanel(Panel rootPanel, string title)
             {
-                CanCollapse = false,
-                ShowTint = true,
-                ShowBorder = true,
-                // BackgroundTexture = AsyncTexture2D,
-                Title = "hi",
-                CanScroll = true,
-                //ArrowRotation = 0,
-                AccentOpacity = 0,
-                Collapsed = false
-            };
+                var container = new ViewContainer()
+                {
+                    WidthSizingMode = SizingMode.Fill,
+                    HeightSizingMode = SizingMode.AutoSize,
+                    Title = title,
+                    ShowBorder = true,
+                    Parent = rootPanel
+                };
 
-            return parentPanel;
-            //*//
+                var lable = new Label()
+                {
+                    Text = "lable me up!",
+                    Size = new Point(300, 200),
+                    Location = new Point(0, 0),
+                    Parent = rootPanel
+                };
+
+                return container;
+            }
+
+            private void BuildMainView(Panel rootPanel)
+            {
+               GetStandardPanel(rootPanel, "bla").Show();
+            }
         }
 
         /*
