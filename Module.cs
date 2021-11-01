@@ -314,9 +314,27 @@ namespace ff.FractalHelper
                 {
                     WidthSizingMode = SizingMode.Fill,
                     HeightSizingMode = SizingMode.AutoSize,
-                    Title = title,
-                    ShowBorder = true,
+                    //Title = title,
+                    //ShowBorder = true,
                     Parent = rootPanel
+                };
+
+                var today = new Panel()
+                {
+                    WidthSizingMode = SizingMode.Fill,
+                    HeightSizingMode = SizingMode.AutoSize,
+                    CanCollapse = true,
+                    ShowBorder = true,
+                    Parent = container,
+                    //ShowTint = true,
+                    //ShowBorder = true,
+                    //public AsyncTexture2D BackgroundTexture { get; set; }
+                    Title = "Heute dran",
+                    CanScroll = true,
+                    //public float ArrowRotation { get; set; }
+                    //public float AccentOpacity { get; set; }
+                    Collapsed = false,
+                    //public override SizingMode HeightSizingMode { get; set; },
                 };
 
                 var lable = new Label()
@@ -324,7 +342,7 @@ namespace ff.FractalHelper
                     Text = "lable me up!",
                     Size = new Point(300, 200),
                     Location = new Point(0, 0),
-                    Parent = rootPanel
+                    Parent = today
                 };
 
                 return container;
