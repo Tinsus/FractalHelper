@@ -1,0 +1,130 @@
+{
+  "details":  {
+    "0": {
+      "icon": "1948133",
+      "en": "Adrenaline Rush",
+      "en_desc": "When enraged, enemies deal 150% increased damage while they're low on health. Enemies deal 20% less damage when not enraged.",
+      "de": "Adrenalinschub",
+      "de_desc": "Wenn sie erzürnt sind, während Ihre Lebenspunkte niedrig sind, fügen Gegner 150% erhöhten Schaden zu. Wenn sie nicht erzürnt sind, fügen Gegner 20% weniger Schaden zu."
+    },
+    "1": {
+      "icon": "1948134",
+      "en": "Afflicted",
+      "en_desc": "Outgoing resistance duration is increased by 50%. Enemies apply random conditions.",
+      "de": "Befallen",
+      "de_desc": "Die Dauer gewährten Widerstands ist um 50 % erhöht. Gegner verursachen zufällige Zustände."
+    },
+    "2": {
+      "icon": "2084733",
+      "en": "Boon Overload",
+      "en_desc": "Each boon increases incoming strike damage by 5%. Outgoing boon duration is increased by 20%.",
+      "de": "Segensüberladung",
+      "de_desc": "Jeder Segen erhöht den erlittenen Schlagschaden um 5 %. Die Dauer gewährter Segen wird um 20 % erhöht."
+    },
+    "3": {
+      "icon": "1948135",
+      "en": "Flux Bomb",
+      "en_desc": "You are periodically afflicted by the Anomaly's flux bombs. Flux bombs apply to both allies and enemies.",
+      "de": "Fluxbombe",
+      "de_desc": "Die Fluxbomben der Anomalie machen Euch in regelmäßigen Abständen zu schaffen. Fluxbomben werden sowohl bei Verbündeten, als auch bei Gegnern angewendet."
+    },
+    "4": {
+      "icon": "1948142",
+      "en": "Fractal Vindicators",
+      "en_desc": "Fractal Avengers are replaced by more-powerful Fractal Vindicators.",
+      "de": "Fraktal-Verteidiger",
+      "de_desc": "Fraktal-Rächer werden durch kraftvollere Fraktal-Verteidiger ersetzt."
+    },
+    "5": {
+      "icon": "2084735",
+      "en": "Frailty",
+      "en_desc": "Players are smaller and have 30% less health, but move 25% faster.",
+      "de": "Gebrechlichkeit",
+      "de_desc": "Spieler sind kleiner und haben 30 % weniger Lebenspunkte, bewegen sich jedoch 25 % schneller."
+    },
+    "6": {
+      "icon": "1948136",
+      "en": "Hamstrung",
+      "en_desc": "Low health increasingly slows your movements. Endurance regenerates 33% faster.",
+      "de": "Gelähmt",
+      "de_desc": "Niedrige Lebenspunkte verlangsamen Eure Bewegungen zunehmend. Ausdauer regeneriert sich 33 % schneller."
+    },
+    "7": {
+      "icon": "1948137",
+      "en": "Last Laugh",
+      "en_desc": "Enemies explode upon dying if not stunned. Stunned enemies apply protection and stability to nearby allies.",
+      "de": "Wer zuletzt lacht",
+      "de_desc": "Gegner explodieren beim Tod, wenn sie nicht betäubt sind. Betäubte Gegner gewähren Verbündeten in der Nähe Schutz und Stabilität."
+    },
+    "8": {
+      "icon": "1948138",
+      "en": "Mists Convergence",
+      "en_desc": "The Fractals of the Mists are blurring together...",
+      "de": "Konvergenz der Nebel",
+      "de_desc": "Die Fraktale der Nebel verschwimmen miteinander..."
+    },
+    "9": {
+      "icon": "1948139",
+      "en": "No Pain, No Gain",
+      "en_desc": "Enemies receive boons when hit. Stripping an enemy boon will steal their life. (Cooldown: 20 seconds)",
+      "de": "Ohne Fleiß kein Preis",
+      "de_desc": "Gegner erhalten bei Treffern Segen. Die Entfernung eines gegnerischen Segens stiehlt ihnen Lebenspunkte. (Erholzeit: 20 Sekunden)"
+    },
+    "10": {
+      "icon": "2084736",
+      "en": "Outflanked",
+      "en_desc": "Foes within 300 range do 300% damage when attacking from behind, but only 75% damage when attacking head on. ",
+      "de": "Überlistet",
+      "de_desc": "Gegner innerhalb einer Reichweite von 300 richten mit Angriffen von hinten 300 % Schaden an, aber mit Frontalangriffen nur 75 %."
+    },
+    "11": {
+      "icon": "1948140",
+      "en": "Social Awkwardness",
+      "en_desc": "Players will be pushed away from one another.",
+      "de": "Unbeholfen in Gesellschaft",
+      "de_desc": "Spieler werden von einander weg gestoßen."
+    },
+    "12": {
+      "icon": "2084738",
+      "en": "Stick Together",
+      "en_desc": "Take 60% increased damage when not within 300 range of an ally. Take 20% reduced damage when within 300 range of an ally.",
+      "de": "Zusammenbleiben",
+      "de_desc": "Nehmt 60 % höheren Schaden, wenn sich kein Verbündeter innerhalb einer Reichweite von 300 befindet. Ist ein Verbündeter innerhalb einer Reichweite von 300, nehmt Ihr 20 % weniger Schaden."
+    },
+    "13": {
+      "icon": "2084739",
+      "en": "Sugar Rush",
+      "en_desc": "Increases movement speed and attack speed by 15%. Elite and lower enemies' movement speed and attack speed increases by 35%.",
+      "de": "Zuckerschub",
+      "de_desc": "Bewegungsgeschwindigkeit und Angriffsgeschwindigkeit werden um 15 % erhöht. Bewegungsgeschwindigkeit und Angriffsgeschwindigkeit von Gegnern vom Rang \"Elite\" und darunter werden um 35 % erhöht."
+    },
+    "14": {
+      "icon": "1948141",
+      "en": "Toxic Trail",
+      "en_desc": "Enemies leave a path of poison behind them. Blocking a toxic trail attack will absorb it and cleanse the condition.",
+      "de": "Toxische Spur",
+      "de_desc": "Gegner hinterlassen eine Giftspur. Beim Blocken eines \"Toxische Spur\"-Angriffs wird sie absorbiert und der Zustand beseitigt."
+    },
+    "15": {
+      "icon": "2084741",
+      "en": "Vengeance",
+      "en_desc": "When enemies die, they enhance nearby foes with multiple boons; does not apply to elite foes. Strip any enemy boon to inflict them with weakness.",
+      "de": "Rache",
+      "de_desc": "Wenn Gegner sterben, verbessern sie Gegner in der Nähe mit mehreren Segen. Dies trifft bei Elite-Gegnern nicht zu. Entfernt jeden Segen von Gegnern, um ihnen Schwäche zuzufügen."
+    },
+    "16": {
+      "icon": "2084742",
+      "en": "We Bleed Fire",
+      "en_desc": "Enemies create flaming missiles when damaged. Incoming condition damage is reduced by 20%.",
+      "de": "Feuer im Blut",
+      "de_desc": "Gegner erzeugen flammende Geschosse, wenn sie Schaden erleiden. Der erlittene Zustandsschaden ist um 20 % verringert."
+    },
+    "17": {
+      "icon": "2084734",
+      "en": "Toxic Sickness",
+      "en_desc": "Team members will periodically be affected with vomit-inducing sickness.",
+      "de": "Toxische Krankheit",
+      "de_desc": "Teammitglieder werden in regelmäßigen Abständen von einer Krankheit betroffen, die Brechreiz verursacht."
+    }
+  }
+}
