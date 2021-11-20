@@ -7,8 +7,8 @@
 
   "description": "Lets make fractales way more easy. With skips and tactics and brain.exe.",
   "dependencies": {
-    "bh.blishhud": ">=0.7.0",
-    "bh.general.markersandpaths": ">=0.2.1"
+    "bh.blishhud": ">=0.11.0",
+    "bh.community.pathing": ">=0.13.11"
   },
   "url": "https://github.com/Tinsus/FractalHelper",
   "contributors": [
@@ -21,17 +21,25 @@
       "username": "fexxianosch.1087"
     }
   ],
-  "directories": [ "fractalhelper" ]
-  /*
-  "actions": [ "Reload Markers" ],
+  "directories": [ "fractalhelper" ],  
+  //"actions": [ "Reload Markers" ],
   "api_permissions": {
-       "account": {
-      "optional": true,
-      "details": "Needed if you want the special feature enabled."
+    "progression": {
+      "optional": false,
+      "details": "Needed to get some information what you know, what you can do on your own or what you had done recently."
+    },
+    "builds": {
+      "optional": false,
+      "details": "Needed to give you some hints about your skills."
     },
     "inventories": {
       "optional": false,
-      "details": "Needed to review the item in your inventory."
+      "details": "Needed to remember you about some missing items and to detect what you just finished."
+    }
+    /*
+    "account": {
+      "optional": true,
+      "details": "Needed if you want the special feature enabled."
     },
     "characters": {
       "optional": false,
@@ -45,19 +53,7 @@
       "optional": false,
       "details": "Needed to review the item in your inventory."
     },
-    "unlocks": {
-      "optional": false,
-      "details": "Needed to review the item in your inventory."
-    },
     "pvp": {
-      "optional": false,
-      "details": "Needed to review the item in your inventory."
-    },
-    "builds": {
-      "optional": false,
-      "details": "Needed to review the item in your inventory."
-    },
-    "progression": {
       "optional": false,
       "details": "Needed to review the item in your inventory."
     },
@@ -65,6 +61,6 @@
       "optional": false,
       "details": "Needed to review the item in your inventory."
     }
+    //*/
   }
-  */
 }
