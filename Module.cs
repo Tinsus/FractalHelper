@@ -47,6 +47,27 @@ namespace ff.FractalHelper
         public ContextMenuStrip _fractalHelperContextMenuStrip;
         #endregion
 
+        #region icon files
+        static AsyncTexture2D icon1948133;
+        static AsyncTexture2D icon1948134;
+        static AsyncTexture2D icon1948135;
+        static AsyncTexture2D icon1948136;
+        static AsyncTexture2D icon1948137;
+        static AsyncTexture2D icon1948138;
+        static AsyncTexture2D icon1948139;
+        static AsyncTexture2D icon1948140;
+        static AsyncTexture2D icon1948141;
+        static AsyncTexture2D icon1948142;
+        static AsyncTexture2D icon2084733;
+        static AsyncTexture2D icon2084734;
+        static AsyncTexture2D icon2084735;
+        static AsyncTexture2D icon2084736;
+        static AsyncTexture2D icon2084738;
+        static AsyncTexture2D icon2084739;
+        static AsyncTexture2D icon2084741;
+        static AsyncTexture2D icon2084742;
+        #endregion
+
         #region Constants
         private const int TOP_MARGIN = 10;
         private const int RIGHT_MARGIN = 5;
@@ -133,29 +154,48 @@ namespace ff.FractalHelper
 
         protected override void Initialize()
         {
+            icon1948133 = ContentsManager.GetTexture("inst/1948133.png");
+            icon1948134 = ContentsManager.GetTexture("inst/1948134.png");
+            icon1948135 = ContentsManager.GetTexture("inst/1948135.png");
+            icon1948136 = ContentsManager.GetTexture("inst/1948136.png");
+            icon1948137 = ContentsManager.GetTexture("inst/1948137.png");
+            icon1948138 = ContentsManager.GetTexture("inst/1948138.png");
+            icon1948139 = ContentsManager.GetTexture("inst/1948139.png");
+            icon1948140 = ContentsManager.GetTexture("inst/1948140.png");
+            icon1948141 = ContentsManager.GetTexture("inst/1948141.png");
+            icon1948142 = ContentsManager.GetTexture("inst/1948142.png");
+            icon2084733 = ContentsManager.GetTexture("inst/2084733.png");
+            icon2084734 = ContentsManager.GetTexture("inst/2084734.png");
+            icon2084735 = ContentsManager.GetTexture("inst/2084735.png");
+            icon2084736 = ContentsManager.GetTexture("inst/2084736.png");
+            icon2084738 = ContentsManager.GetTexture("inst/2084738.png");
+            icon2084739 = ContentsManager.GetTexture("inst/2084739.png");
+            icon2084741 = ContentsManager.GetTexture("inst/2084741.png");
+            icon2084742 = ContentsManager.GetTexture("inst/2084742.png");
+
             _fractalHelperIcon = new CornerIcon()
 
             {
                 IconName = GetLoca("title"),
-                Icon = ContentsManager.GetTexture(@"logo_32.png"),
+                Icon = ContentsManager.GetTexture("logo_32.png"),
                 Priority = 0
             };
 
             _fractalHelperContextMenuStrip = new ContextMenuStrip();
 
             _settingsWindow = new TabbedWindow2(
-                ContentsManager.GetTexture(@"156006.png"),
+                ContentsManager.GetTexture("156006.png"),
                 new Microsoft.Xna.Framework.Rectangle(35, 36, 900, 640),
                 new Microsoft.Xna.Framework.Rectangle(95, 42, 783 + 38, 592)
             ) {
                 Title = GetLoca("title"),
                 Parent = GameService.Graphics.SpriteScreen,
                 Location = new Point(100, 100),
-                Emblem = ContentsManager.GetTexture(@"logo_64.png")
+                Emblem = ContentsManager.GetTexture("logo_64.png")
             };
 
-            _settingsWindow.Tabs.Add(new Tab(ContentsManager.GetTexture(@"102497_32.png"), () => new MainView(), GetLoca("wiki")));
-            _settingsWindow.Tabs.Add(new Tab(ContentsManager.GetTexture(@"102497_32.png"), () => new SettingsView(_packSettings), GetLoca("wiki")));
+            _settingsWindow.Tabs.Add(new Tab(ContentsManager.GetTexture("102497_32.png"), () => new MainView(), GetLoca("wiki")));
+            _settingsWindow.Tabs.Add(new Tab(ContentsManager.GetTexture("102497_32.png"), () => new SettingsView(_packSettings), GetLoca("wiki")));
 
             /*
             newWindow.AddTab(new WindowTab(GetLoca("wiki"), ContentsManager.GetTexture(@"102497.png"), 1), () => new Blish_HUD.Settings.UI.Views.SettingsView(_packSettings));
@@ -335,6 +375,21 @@ namespace ff.FractalHelper
                     //public float AccentOpacity { get; set; }
                     Collapsed = false,
                     //public override SizingMode HeightSizingMode { get; set; },
+                };
+
+                var t4_1 = new Label()
+                {
+                    Text = "Fraktal 1",
+                    Size = new Point(300, 25),
+                    Location = new Point(10, 0),
+                    Parent = today,
+                };
+
+                var image = new Image(icon1948133)
+                {
+                    Size = new Point(32, 32),
+                    Location = new Point(320, 30),
+                    Parent = today,
                 };
 
                 var lable = new Label()
